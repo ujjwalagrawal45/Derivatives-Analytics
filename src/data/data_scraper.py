@@ -103,12 +103,15 @@ def get_risk_free_rate() -> float:
         end = datetime.datetime.today()
         start = end - datetime.timedelta(days=30)
 
-        rates = pdr.DataReader(
-            "DGS3MO",
-            "fred",
-            start,
-            end
-        )
+        treasury = yf.Ticker("^IRX") # 13 week T-Bill index
+        # rates = pdr.DataReader(
+        #     "DGS3MO",
+        #     "fred",
+        #     start,
+        #     end
+        # )
+
+        rates = treasury.history(period="1d")["Close"] # removing .iloc[-1] now and adding it to latest rates
 
         latest_rate = rates.iloc[-1, 0]
 

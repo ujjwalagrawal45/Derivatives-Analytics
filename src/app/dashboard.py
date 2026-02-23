@@ -29,8 +29,8 @@ st.caption(
     "Black–Scholes | Binomial Tree | Monte Carlo | Volatility Surface | Risk Analytics"
 )
 
-
 # ---------------------------------------------------
+
 # Sidebar Navigation
 # ---------------------------------------------------
 page = st.sidebar.radio(
@@ -296,18 +296,18 @@ if page == "Volatility Analytics":
     fig_smile = plot_volatility_smile(calls, ticker, expiry)
     st.plotly_chart(fig_smile, use_container_width=True)
 
-    st.markdown("## Model Divergence")
-    results = compare_models(
-        calls, S, T, r, q,
-        steps=steps,
-        option_type="call"
-    )
+    # st.markdown("## Model Divergence")
+    # results = compare_models(
+    #     calls, S, T, r, q,
+    #     steps=steps,
+    #     option_type="call"
+    # )
 
-    st.write(results.head())
-    st.write(results.columns)
+    # st.write(results.head())
+    # st.write(results.columns)
 
-    fig_div = plot_model_errors(results, ticker, expiry)
-    st.plotly_chart(fig_div, use_container_width=True)
+    # fig_div = plot_model_errors(results, ticker, expiry)
+    # st.plotly_chart(fig_div, use_container_width=True)
 
     # 3D Surface
     st.markdown("## 🌊 3D Volatility Surface")
